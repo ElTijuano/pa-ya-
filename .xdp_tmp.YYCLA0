@@ -27,11 +27,11 @@
         "type" : 0
       }
     ],
-    "uri" : "http://127.0.0.1:5000/makeALink",
+    "uri" : "http://127.0.0.1:5000/makeDepositRequest",
     "method" : 1,
     "validate_x509" : true,
     "data_type" : "BODY_TYPE_RAW",
     "raw_language" : 1,
-    "raw" : "{\"human\":{\"name\":\"David\",\"lastname\":\"Andrade\",\"date\": \"20191001\"},\"ExternalID\":\"Af37EDB758612\",\"IDprovider\":\"Facebook\"}"
+    "raw" : "{\n   \"userToken\":\"XXXXXXXX\",\n   \"requestInfo\":{\n      \"linkID\":\"XXXXXXXX\",\n      \"amount\":\"XXXXXXXX\",\n      \"depositReason\":\"ASDASDASASDAS\",\n      \"depositType\":\"<Ahorro/Directo>\"\n   }\n}"
   }
 }

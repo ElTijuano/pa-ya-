@@ -6,8 +6,14 @@ def storeClient(client):
 def storeLink(SenderHash, ReciverHash):
     return "00001", "Ok"
 
+def storeRequest(requestInfo, requestID, reference):
+    return "Ok"
+
 def genID():
     return "00001"
+
+def genRequestIDs():
+    return "00001", "083FJS5339FJ"
 
 def auth(token):
     return True
@@ -31,4 +37,15 @@ def newLink(data):
         linkID = None
         status = 500
     response = {"linkID":linkID, "status":status}
+    return dumps(response)
+
+def newDepositRequest(data):
+    if auth(data.get('userToken')):
+        requestID, reference = genRequestIDs(data.get('requestInfo'))
+        status = storeRequest(data.get('requestInfo'), requestID, reference)
+    else:
+        reference = None
+        status = 500
+
+    response = {"reference":reference, "status":status}
     return dumps(response)

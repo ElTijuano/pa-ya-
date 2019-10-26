@@ -1,6 +1,6 @@
 from flask import Flask, request
 from json import dumps, loads
-from Register import newClient, newLink
+from Register import newClient, newLink, newDepositRequest
 app = Flask(__name__)
 
 
@@ -26,4 +26,19 @@ def newClientService():
 #}
 def newLinkService():
     response = newLink(request.json)
+    return response
+
+@app.route("/makeDepositRequest", methods=['POST'])
+#{
+#   "userToken":"XXXXXXXX"
+#   "requestInfo":{
+#      "linkID":"XXXXXXXX",
+#      "amount":"XXXXXXXX",
+#      "bank":"BANCO X"
+#      "depositReason":"RAZON X",
+#      "depositType":"<Ahorro/Directo>"
+#   }
+#}
+def newDepositRequestService():
+    response = newDepositRequest(request.json)
     return response
