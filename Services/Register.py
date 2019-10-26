@@ -9,6 +9,9 @@ def storeLink(SenderHash, ReciverHash):
 def storeRequest(requestInfo, requestID, reference):
     return "Ok"
 
+def storePeriodicService(serviceInfo, linkID):
+    return "00001", "Ok"
+
 def genID():
     return "00001"
 
@@ -16,6 +19,9 @@ def genRequestIDs():
     return "00001", "083FJS5339FJ"
 
 def auth(token):
+    return True
+
+def validService(serviceInfo):
     return True
 
 def newClient(data):
@@ -48,4 +54,14 @@ def newDepositRequest(data):
         status = 500
 
     response = {"reference":reference, "status":status}
+    return dumps(response)
+
+def periodicServiceRegister(data):
+    if (auth(data.get('userToken')) and validService(data.get('serviceInfo'))):
+        serviceID, status = storePeriodicService(data.get('serviceInfo'), data.get('linkID'))
+    else:
+        serviceID = None
+        status = 500
+
+    response = {"serviceID":serviceID, "status":status}
     return dumps(response)
