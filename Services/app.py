@@ -16,4 +16,4 @@ def newClientService():
 @app.route("/clientRegister", methods=['POST'])
 def newClientService():
     clientID=newClient(request.json)
-    return clientID
+    return clientID 
