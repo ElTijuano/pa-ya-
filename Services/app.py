@@ -1,6 +1,6 @@
 from flask import Flask, request
 from json import dumps, loads
-from Register import newClient
+from Register import newClient, newLink
 app = Flask(__name__)
 
 
@@ -13,7 +13,17 @@ def newClientService():
     clientID=newClient(request.json)
     return clientID
 
-@app.route("/clientRegister", methods=['POST'])
-def newClientService():
-    clientID=newClient(request.json)
-    return clientID 
+@app.route("/makeALink", methods=['POST'])
+#{
+#   "sender":{
+#      "hash":"XXXXXXXX",
+#      "token":"XXXXXXXX"
+#   },
+#   "reciver":{
+#      "hash":"XXXXXXXX",
+#      "token":"XXXXXXXX"
+#   }
+#}
+def newLinkService():
+    response = newLink(request.json)
+    return response
