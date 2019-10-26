@@ -12,6 +12,9 @@ def storeRequest(requestInfo, requestID, reference):
 def storePeriodicService(serviceInfo, linkID):
     return "00001", "Ok"
 
+def storePeriodicServiceAsk(serviceInfo, linkID):
+    return "00001", "Ok"
+
 def transfer(transferInfo):
     return "Ok"
 
@@ -67,6 +70,16 @@ def periodicServiceRegister(data):
         status = 500
 
     response = {"serviceID":serviceID, "status":status}
+    return dumps(response)
+
+def askForPeriodicServiceRegister(data):
+    if (auth(data.get('userToken')) and validService(data.get('serviceInfo'))):
+        askID, status = storePeriodicServiceAsk(data.get('serviceInfo'), data.get('linkID'))
+    else:
+        askID = None
+        status = 500
+
+    response = {"askID":askID, "status":status}
     return dumps(response)
 
 def transferFromSavings(data):

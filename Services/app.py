@@ -58,6 +58,20 @@ def periodicServiceRegisterService():
     response = periodicServiceRegister(request.json)
     return response
 
+@app.route("/askForPeriodicServiceRegister", methods=methods)
+#{
+#   "userToken":"XXXXXXXX",
+#   "linkID":"XXXXXXXX",
+#   "serviceInfo":{
+#       "provider":"Provider name",
+#       "account":"XXXXXXXXXXXX",
+#       "reference":"XXXXXXXXXXXX"
+#   }
+#}
+def askForPeriodicServiceRegisterService():
+    response = askForPeriodicServiceRegister(request.json)
+    return response
+
 @app.route("/transferFromSavings", methods=methods)
 #{
 #   "userToken":"XXXXXXXX",
