@@ -1,0 +1,37 @@
+{
+  "cookies" : [
+  ],
+  "headers" : [
+  ],
+  "body" : {
+    "form" : [
+      {
+        "enabled" : true,
+        "key" : "human",
+        "value" : "{\"name\":\"David\",\"lastname\":\"Andrade\",\"date\": \"20191001\"}",
+        "file" : null,
+        "type" : 0
+      },
+      {
+        "enabled" : true,
+        "key" : "ExternalID",
+        "value" : "\"Af37EDB758612\"",
+        "file" : null,
+        "type" : 0
+      },
+      {
+        "enabled" : true,
+        "key" : "IDprovider",
+        "value" : "\"Facebook\"",
+        "file" : null,
+        "type" : 0
+      }
+    ],
+    "uri" : "http://127.0.0.1:5000/clientRegister",
+    "method" : 1,
+    "validate_x509" : false,
+    "data_type" : "BODY_TYPE_FORMDATA",
+    "raw_language" : 0,
+    "raw" : ""
+  }
+}
