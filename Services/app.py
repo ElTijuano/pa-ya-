@@ -1,6 +1,6 @@
 from flask import Flask, request
 from json import dumps, loads
-from Register import newClient, newLink, newDepositRequest, serviceRegister
+from Register import newClient, newLink, newDepositRequest, periodicServiceRegister,transferFromSavings
 app = Flask(__name__)
 
 methods = ['POST']
@@ -56,4 +56,16 @@ def newDepositRequestService():
 #}
 def periodicServiceRegisterService():
     response = periodicServiceRegister(request.json)
+    return response
+
+@app.route("/transferFromSavings", methods=methods)
+#{
+#   "userToken":"XXXXXXXX",
+#   "transferInfo":{
+#       "linkID":"XXXXXXXX",
+#       "ammount":"XXXXXXXXXX",
+#   }
+#}
+def transferFromSavingsService():
+    response = transferFromSavings(request.json)
     return response
