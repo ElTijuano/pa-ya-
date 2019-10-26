@@ -83,3 +83,16 @@ def askForPeriodicServiceRegisterService():
 def transferFromSavingsService():
     response = transferFromSavings(request.json)
     return response
+
+@app.route("/makeIncomeRequest", methods=methods)
+#{
+#   "userToken":"XXXXXXXX",
+#   "requestInfo":{
+#      "linkID":"XXXXXXXX",
+#      "amount":"XXXXXXXX",
+#      "requestReason":"RAZON X"
+#   }
+#}
+def newIncomeRequestService():
+    response = newIncomeRequest(request.json)
+    return response

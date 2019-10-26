@@ -9,6 +9,9 @@ def storeLink(SenderHash, ReciverHash):
 def storeRequest(requestInfo, requestID, reference):
     return "Ok"
 
+def storeIncomeRequest(requestInfo, requestID, reference):
+    return "Ok"
+
 def storePeriodicService(serviceInfo, linkID):
     return "00001", "Ok"
 
@@ -23,6 +26,9 @@ def genID():
 
 def genRequestIDs():
     return "00001", "083FJS5339FJ"
+
+def genRequestID():
+	return "00001"
 
 def auth(token):
     return True
@@ -85,6 +91,16 @@ def askForPeriodicServiceRegister(data):
 def transferFromSavings(data):
     if auth(data.get('userToken')):
         status = transfer(data.get('transferInfo'))
+    else:
+        status = 500
+
+    response = {"status":status}
+    return dumps(response)
+
+def newIncomeRequest(data):
+    if auth(data.get('userToken')):
+        requestID = genRequestID(data.get('requestInfo'))
+        status = storeIncomeRequest(data.get('requestInfo'), requestID, reference)
     else:
         status = 500
 
