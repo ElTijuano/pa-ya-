@@ -27,7 +27,7 @@
         "type" : 0
       }
     ],
-    "uri" : "http://127.0.0.1:5000/serviceRegister",
+    "uri" : "http://127.0.0.1:5000/",
     "method" : 1,
     "validate_x509" : true,
     "data_type" : "BODY_TYPE_RAW",
