@@ -96,3 +96,12 @@ def transferFromSavingsService():
 def newIncomeRequestService():
     response = newIncomeRequest(request.json)
     return response
+
+@app.route("/cancelPeriodicServiceRegister", methods=methods)
+#{
+#   "userToken":"XXXXXXXX",
+#   "serviceID":"XXXXXXXX",
+#}
+def cancelPeriodicServiceRegisterService():
+    response = cancelPeriodicServiceRegister(request.json)
+    return response

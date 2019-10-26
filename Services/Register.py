@@ -106,3 +106,12 @@ def newIncomeRequest(data):
 
     response = {"status":status}
     return dumps(response)
+
+def cancelPeriodicServiceRegister(data):
+    if auth(data.get('userToken')):
+        status = storePeriodicService(data.get('serviceID'))
+    else:
+        status = 500
+
+    response = {"status":status}
+    return dumps(response)
