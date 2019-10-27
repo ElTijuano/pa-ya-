@@ -12390,7 +12390,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems, null);
   });
 
+<<<<<<< HEAD
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.materialboxed');
     var instances = M.Materialbox.init(elems, null);
   });
+=======
+
+    $(document).ready(function() {
+      M.updateTextFields();
+    });
+>>>>>>> fe355ed46b149296181cce6eb37772a6229dcfb3
