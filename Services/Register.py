@@ -1,7 +1,53 @@
 from json import dumps, loads
+import azure.cosmos.cosmos_client as cosmos_client
+import azure.cosmos.errors as az_err
+from pickle import load, dump
+
+config = {
+    'ENDPOINT': 'https://basepro.documents.azure.com:443/',
+    'PRIMARYKEY': 'WFau3JjOINHhK3NrLBzlZxNOz3C4zHn0VP8FRX20moNtlTzOkBneMshBmiRTaQfR6YA6Tjrowj2NxxYlqPC0AQ==',
+    'DATABASE': 'basepro'
+}
+
+def openContainer(containerID):
+    client = cosmos_client.CosmosClient(url_connection=config['ENDPOINT'], auth={'masterKey': config['PRIMARYKEY']})
+
+    try:
+        db = client.CreateDatabase({'id': config['DATABASE']})
+        with open('DB.pkl', 'wb') as f:
+            dump(db, f, -1)
+    except:
+        with open('DB.pkl', 'rb') as f:
+            db = load(f)
+
+    try:
+        options = {'offerThroughput': 400}
+        container_definition = {'id': containerID}
+        container = client.CreateContainer(db['_self'], container_definition, options)
+        with open(containerID + '.pkl', 'wb') as f:
+            dump(container, f, -1)
+    except:
+        with open(containerID + '.pkl', 'rb') as f:
+            container= load(f)
+
+    return client, container
+
+def queryAction(queryText, client, container):
+    query = {'query': queryText}
+
+    options = {}
+    options['enableCrossPartitionQuery'] = True
+    options['maxItemCount'] = 2
+
+    result = client.QueryItems(container['_self'], query, options)
+    return result
 
 def storeClient(client):
-    return "Ok"
+    cosm_client, container = openContainer('cliente')
+
+    item1 = cosm_client.CreateItem(container['_self'], client)
+
+    return item1
 
 def storeLink(SenderHash, ReciverHash):
     return "00001", "Ok"
