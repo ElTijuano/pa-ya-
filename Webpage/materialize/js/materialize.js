@@ -12369,6 +12369,23 @@ $jscomp.polyfill = function (e, r, p, m) {
   if (M.jQueryLoaded) {
     M.initializeJqueryWrapper(Range, 'range', 'M_Range');
   }
-
   Range.init($('input[type=range]'));
 })(cash, M.anime);
+
+//###############################################################################
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, null);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, null);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, null);
+  });
